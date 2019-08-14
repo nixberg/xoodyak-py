@@ -13,13 +13,13 @@ class Xoodoo:
 
         j = 0
         for i in range(12):
-            s[i] |= (self._bytes[j] << 0) & 0xFFFF_FFFF
+            s[i] = self._bytes[j] << 0
             j += 1
-            s[i] |= (self._bytes[j] << 8) & 0xFFFF_FFFF
+            s[i] |= self._bytes[j] << 8
             j += 1
-            s[i] |= (self._bytes[j] << 16) & 0xFFFF_FFFF
+            s[i] |= self._bytes[j] << 16
             j += 1
-            s[i] |= (self._bytes[j] << 24) & 0xFFFF_FFFF
+            s[i] |= self._bytes[j] << 24
             j += 1
 
         round_constants = [
