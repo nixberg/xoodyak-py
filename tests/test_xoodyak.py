@@ -40,8 +40,8 @@ def test_aead():
         ct_only = ct[: len(pt)]
         tag = ct[len(pt) :]
 
-        new_ct_only = memoryview(bytearray(len(ct_only)))
-        new_tag = memoryview(bytearray(len(tag)))
+        new_ct_only = bytearray(len(ct_only))
+        new_tag = bytearray(len(tag))
 
         xoodyak = Xoodyak.keyed(key)
         xoodyak.absorb(nonce)
@@ -52,7 +52,7 @@ def test_aead():
         assert ct_only == new_ct_only
         assert tag == new_tag
 
-        new_pt = memoryview(bytearray(len(pt)))
+        new_pt = bytearray(len(pt))
 
         xoodyak = Xoodyak.keyed(key)
         xoodyak.absorb(nonce)
